@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuvem de Algodão Kids | Loja Virtual Infantojuvenil</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="top-bar">
+      🚚 Frete Grátis para todo o Brasil em compras acima de R$ 199,00!
+    </div>
+    <div class="nav-container">
+      <a href="#" class="logo">🧸 Nuvem de Algodão</a>
+      
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Buscar roupas, conjuntos, vestidos...">
+      </div>
+
+      <div class="nav-icons">
+        <button class="icon-btn" onclick="abrirAdminModal()" title="Painel Admin Demo">⚙️</button>
+        <button class="icon-btn" title="Favoritos">❤️ <span class="badge" id="favBadge">0</span></button>
+        <button class="icon-btn" onclick="abrirModalCarrinho()" title="Carrinho">🛒 <span class="badge" id="cartBadge">0</span></button>
+      </div>
+    </div>
+
+    <nav class="main-nav">
+      <ul class="nav-links">
+        <li><a href="#">Bebês</a></li>
+        <li><a href="#">Meninas</a></li>
+        <li><a href="#">Meninos</a></li>
+        <li><a href="#">Conjuntos</a></li>
+        <li><a href="#">Vestidos</a></li>
+        <li><a href="#">Casacos</a></li>
+        <li><a href="#">Promoções</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <main class="container">
+    <!-- Banner Principal -->
+    <section class="hero-banner">
+      <h1>Coleção Outono/Inverno ✨</h1>
+      <p>Peças delicadas, confortáveis e cheias de estilo para os seus pequenos.</p>
+      <button class="btn-primary" onclick="window.scrollTo({top: 500, behavior: 'smooth'})">Comprar Agora</button>
+    </section>
+
+    <!-- Layout da Loja -->
+    <div class="shop-layout">
+      <!-- Sidebar de Filtros -->
+      <aside class="filters-sidebar">
+        <h3>Filtros</h3>
+        <br>
+        <div class="filter-group">
+          <h4>Categoria</h4>
+          <select id="catFilter">
+            <option value="todas">Todas</option>
+            <option value="Bebês">Bebês</option>
+            <option value="Vestidos">Vestidos</option>
+            <option value="Conjuntos">Conjuntos</option>
+            <option value="Pijamas">Pijamas</option>
+            <option value="Casacos">Casacos</option>
+            <option value="Blusas">Blusas</option>
+            <option value="Calças">Calças</option>
+            <option value="Shorts">Shorts</option>
+            <option value="Acessórios">Acessórios</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <h4>Gênero</h4>
+          <select id="generoFilter">
+            <option value="todos">Todos</option>
+            <option value="Bebê">Bebês</option>
+            <option value="Menina">Meninas</option>
+            <option value="Menino">Meninos</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <h4>Ordenar Por</h4>
+          <select id="ordemFilter">
+            <option value="relevancia">Relevância</option>
+            <option value="menorPreco">Menor Preço</option>
+            <option value="maiorPreco">Maior Preço</option>
+            <option value="melhorAvaliados">Melhor Avaliados</option>
+          </select>
+        </div>
+      </aside>
+
+      <!-- Catálogo de Produtos -->
+      <section>
+        <div class="products-grid" id="productsGrid">
+          <!-- Renderizado dinamicamente via JS -->
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Modal Carrinho -->
+  <div class="modal" id="modalCarrinho">
+    <div class="modal-content">
+      <button class="close-modal" onclick="fecharModalCarrinho()">✕</button>
+      <h2>Seu Carrinho 🛒</h2>
+      <br>
+      <div id="carrinhoItems"></div>
+      <br>
+      <h3>Total: R$ <span id="cartTotal">0.00</span></h3>
+      <br>
+      <button class="btn-primary" style="width: 100%; background: var(--primary-pink); color: white;" onclick="simularCheckout()">Finalizar Compra (Simulação)</button>
+    </div>
+  </div>
+
+  <!-- Modal Admin Demonstrativo -->
+  <div class="modal" id="modalAdmin">
+    <div class="modal-content">
+      <button class="close-modal" onclick="fecharAdminModal()">✕</button>
+      <h2>Painel Administrativo (Demonstração)</h2>
+      <p style="font-size: 0.85rem; color: #666;">Ambiente simulado para gerenciamento da loja no GitHub Pages.</p>
+      <br>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+        <div style="background:#f0f0f0; padding:15px; border-radius:8px;">
+          <h4>Vendas do Mês</h4>
+          <p style="font-size: 1.5rem; font-weight:bold; color: #4caf50;">R$ 14.850,00</p>
+        </div>
+        <div style="background:#f0f0f0; padding:15px; border-radius:8px;">
+          <h4>Pedidos</h4>
+          <p style="font-size: 1.5rem; font-weight:bold; color: #2196f3;">128</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botão Flutuante WhatsApp -->
+  <a href="https://wa.me/5500000000000" class="whatsapp-float" target="_blank" title="Fale conosco">💬</a>
+
+  <!-- Rodapé -->
+  <footer>
+    <div class="footer-content">
+      <div>
+        <h3>Nuvem de Algodão Kids</h3>
+        <p style="font-size: 0.85rem; color: #666; margin-top: 5px;">A melhor loja virtual para vestir seus filhos com carinho e conforto.</p>
+      </div>
+      <div>
+        <h4>Atendimento</h4>
+        <p style="font-size: 0.85rem; color: #666;">Segunda a Sexta: 08h às 18h<br>Email: contato@nuvemdealgodaokids.com.br</p>
+      </div>
+      <div>
+        <h4>Pagamento Seguro</h4>
+        <p style="font-size: 0.85rem; color: #666;">Pix | Cartão de Crédito | Boleto</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Nuvem de Algodão Kids. Projeto Demonstrativo para GitHub Pages.
+    </div>
+  </footer>
+
+  <script src="js/produtos.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
